@@ -1,0 +1,15 @@
+<div class="main users-index">
+  <div class="container">
+    <h1 class="users-heading">トレーナー一覧</h1>
+    <% @trainers.each do |trainer| %>
+      <div class="users-index-item">
+        <div class="user-left">
+          <img src="<%= "/trainer_images/#{trainer.image_name}" %>">
+        </div>
+        <div class="user-right">
+          <%= link_to(trainer.name, "/trainers/#{trainer.id}") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

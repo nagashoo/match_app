@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MatchApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-logo">
+        <a href="/">GETRAINER</a>
+      </div>
+      <ul class="header-menus">
+        <% if session[:user_id] %>
+          <li>
+            ログインユーザー：
+            <%= session[:user_id] %>
+          </li>
+          <li>
+            <%= link_to("トレーナー一覧", "/trainers/index") %>
+          </li>
+          <li>
+            <%= link_to("ユーザー一覧", "/users/index") %>
+          </li>
+          <li>
+            <a href="/about">GETRAINERとは</a>
+          </li>
+          <li>
+            <%= link_to("トレーナー登録", "/trainers/signup") %>
+          </li>
+          <li>
+            <%= link_to("新規登録", "/signup") %>
+          </li>
+          <li>
+            <%= link_to("ログイン", "/login") %>
+          </li>
+          <li>
+            <%= button_to("ログアウト", "/logout") %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
+
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    
+    <%= yield %>
+  </body>
+</html>
