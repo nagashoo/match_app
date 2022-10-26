@@ -35,9 +35,10 @@ form input[type="submit"] {
   cursor: pointer;
 }
 
-.top-message h2 {
-  font: 100%/1.5 'Avenir Next', 'Hiragino Sans', sans-serif;
-  line-height: 1.7;
-  letter-spacing: 1px;
+top-main {
+  background-repeat: no-repeat;
+  background-position: center 50%;
+  background-size: cover;
+  background-image: url("/top.jpg");
 }
 

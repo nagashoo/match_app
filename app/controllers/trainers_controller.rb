@@ -8,7 +8,7 @@ class TrainersController < ApplicationController
   end
 
   def new
-    @tainer = Trainer.new
+    @trainer = Trainer.new
   end
 
   def create
@@ -23,6 +23,7 @@ class TrainersController < ApplicationController
       flash[:notice] = "ユーザー登録を完了しました"
       redirect_to("/trainers/#{@trainer.id}")
     else
+      flash[:notice] = "ユーザー登録に失敗しました"
       render("trainers/new")
     end
   end
