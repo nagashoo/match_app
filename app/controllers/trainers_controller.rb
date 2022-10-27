@@ -36,6 +36,10 @@ class TrainersController < ApplicationController
     @trainer = Trainer.find_by(id: params[:id])
     @trainer.name = params[:name]
     @trainer.email = params[:email]
+    @trainer.location = params[:location]
+    @trainer.gender = params[:gender]
+    @trainer.age = params[:age]
+    @trainer.profile = params[:profile]
     if params[:image]
       @trainer.image_name = "#{@trainer.id}.jpg"
       image = params[:image]

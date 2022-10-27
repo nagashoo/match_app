@@ -6,6 +6,8 @@
       <p><%= @trainer.email %></p>
       <%= link_to("編集", "/trainers/#{@trainer.id}/edit") %>
       <p>プロフィール</p>
+      <p><%= @trainer.location %>  <%= @trainer.gender %>  <%= @trainer.age %></p>
+      <p><%= @trainer.profile %></p>
     </div>
   </div>
 </div>
