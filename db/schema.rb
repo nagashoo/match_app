@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_24_065756) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_27_082212) do
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "following_id"
@@ -37,6 +37,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_065756) do
     t.string "image_name"
     t.string "password"
     t.text "profile"
+    t.string "location"
+    t.string "gender"
+    t.string "age"
   end
 
 end
