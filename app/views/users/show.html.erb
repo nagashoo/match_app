@@ -5,6 +5,7 @@
       <h2><%= @user.name %></h2>
       <p><%= @user.email %></p>
       <%= link_to("編集", "/users/#{@user.id}/edit") %>
+      <%= button_to("アカウント削除", "/users/#{@user.id}/destroy") %>
       <h3>プロフィール</h3>
       <p><%= @user.location %>  <%= @user.gender %>  <%= @user.age %></p>
       <p class="text_display"><%= @user.profile %></p>
