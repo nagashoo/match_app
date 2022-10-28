@@ -59,9 +59,9 @@ class TrainersController < ApplicationController
   def login
     @trainer = Trainer.find_by(email: params[:email], password: params[:password])
     if @trainer
-      session[:user_id] = @trainer.id
+      session[:trainer_id] = @trainer.id
       flash[:success] = "ログインしました"
-      redirect_to("/users/#{@trainer.id}")
+      redirect_to("/trainers/#{@trainer.id}")
     else
       @error_messsage = "メールアドレスまたはパスワードが間違っています"
       @email = params[:email]
@@ -71,5 +71,8 @@ class TrainersController < ApplicationController
   end
 
   def logout
+    session[:trainer_id] = nil
+    flash[:success] = "ログアウトしました"
+    redirect_to("/trainers/login")
   end
 end

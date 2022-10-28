@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post "interests/:trainer_id/create" => "interests#create"
+
   get 'trainers/index' => "trainers#index"
   get "trainers/signup" => "trainers#new"
   get "trainers/:id" => "trainers#show"

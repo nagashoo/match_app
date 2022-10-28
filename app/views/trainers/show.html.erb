@@ -8,6 +8,7 @@
       <p>プロフィール</p>
       <p><%= @trainer.location %>  <%= @trainer.gender %>  <%= @trainer.age %></p>
       <p class="text_display"><%= @trainer.profile %></p>
+      <%= button_to("話を聞きたい", "/interests/#{@trainer.id}/create") %>
     </div>
   </div>
 </div>
