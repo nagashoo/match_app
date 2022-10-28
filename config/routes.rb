@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   post "interests/:trainer_id/create" => "interests#create"
+  post "interests/:trainer_id/destroy" => "interest#destroy"
 
   get 'trainers/index' => "trainers#index"
   get "trainers/signup" => "trainers#new"
