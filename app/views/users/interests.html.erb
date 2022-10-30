@@ -1,0 +1,30 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+      <img src="<%= "/user_images/#{@user.image_name}" %>">
+      <h2><%= @user.name %></h2>
+      <p><%= @user.email %></p>
+      <% if @user.id == @current_user.id %>
+        <%= link_to("編集", "/users/#{@user.id}/edit") %>
+      <% end %>
+    </div>
+    
+    <ul class="user-tabs">
+      <li class="active"><%= link_to("話を聞きたい", "/users/#{@user.id}/interests") %></li>
+    </ul>
+    
+    <% @interests.each do |interest| %>
+      <% trainer = Trainer.find_by(id: interest.trainer_id) %>
+      <div class="trainers-index-item">
+        <div class="trainer-left">
+          <img src="<%= "/trainer_images/#{trainer.image_name}" %>">
+        </div>
+        <div class="trainer-right">
+          <div class="trainer-name">
+            <%= link_to(trainer.name, "/trainers/#{trainer.id}") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

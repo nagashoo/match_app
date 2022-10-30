@@ -81,4 +81,9 @@ class UsersController < ApplicationController
     redirect_to("/login")
   end
 
+  def interests
+    @user = User.find_by(id: params[:id])
+    @interests = Interest.where(user_id: @user.id)
+  end
+
 end

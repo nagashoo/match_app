@@ -9,6 +9,8 @@
       <h3>プロフィール</h3>
       <p><%= @user.location %>  <%= @user.gender %>  <%= @user.age %></p>
       <p class="text_display"><%= @user.profile %></p>
+
+      <%= link_to("話を聞きたい", "/users/#{@user.id}/interests") %>
     </div>
   </div>
 </div>
