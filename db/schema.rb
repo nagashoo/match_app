@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_28_120607) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_30_142641) do
+  create_table "chat_rooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "trainer_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "trainer_id"
+    t.integer "room_id"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "interests", force: :cascade do |t|
     t.integer "user_id"
     t.integer "trainer_id"
@@ -26,6 +43,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_120607) do
     t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
     t.index ["following_id"], name: "index_relationships_on_following_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "trainers", force: :cascade do |t|

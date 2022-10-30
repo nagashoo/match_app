@@ -8,7 +8,11 @@
       <p>プロフィール</p>
       <p><%= @trainer.location %>  <%= @trainer.gender %>  <%= @trainer.age %></p>
       <p class="text_display"><%= @trainer.profile %></p>
-      <%= button_to("話を聞きたい", "/interests/#{@trainer.id}/create") %>
+      <% if Interest.find_by(user_id: @current_user.id, trainer_id: @trainer.id) %>
+        <%= button_to("話を聞きたい", "/interests/#{@trainer.id}/create") %>
+      <% else %>
+        <%= button_to("取り消し", "/interests/#{@trainer.id}/destroy") %>
+      <% end %>
     </div>
   </div>
 </div>
