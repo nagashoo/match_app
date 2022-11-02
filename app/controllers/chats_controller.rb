@@ -24,9 +24,9 @@ class ChatsController < ApplicationController
       message: params[:message]
     )
     if @chat.save
-      flash[:notice] = "チャットを送信しました"
+      flash[:notice] = "メッセージを送信しました"
     else
-      flash[:notice] = "送信に失敗しました"
+      flash[:notice] = "メッセージ送信に失敗しました"
     end
   end
 
