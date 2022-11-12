@@ -21,7 +21,8 @@
         </div>
         <div class="trainer-right">
           <div class="trainer-name">
-            <%= link_to(trainer.name, "/trainers/#{trainer.id}") %>
+            <% room = Room.find_by(params[:id]) %>
+            <%= link_to(trainer.name, "/rooms/#{room.id}") %>
           </div>
         </div>
       </div>
