@@ -11,17 +11,18 @@ const appRoom = consumer.subscriptions.create("RoomChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
-    const chats =document.getElementById('chats');
-    chats.insertAdjacentHTML('beforeend', data['chat']);
+    const Chats = document.getElementById('chat-messages');
+    Chats.insertAdjacentHTML('beforeend', data['chat']);
+    return alert(data['chat']);
   },
 
-  speak: function(chat) {
-    return this.perform('speak', {chat: chat});
+  speak: function(chat, room_id) {
+    return this.perform('speak', {chat: chat, room_id: room_id});
   }
 });
 
 if(/rooms/.test(location.pathname)) {
-  $(document).on("keydown", ".room__message-form_textarea", function(e) {
+  $(document).on("keydown", ".chat-room__message-form_textarea", function(e) {
     if (e.key === "Enter") {
       const room_id = $('textarea').data('room_id')
       appRoom.speak(e.target.value, room_id);
