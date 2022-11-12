@@ -1,5 +1,7 @@
 class Trainer < ApplicationRecord
-  validates :email, {uniqueness: true}
+  validates :name, {presence: true}
+  validates :email, {presence: true, uniqueness: true}
+  validates :password, {presence: true}
 
   #has_many :rooms, through: chat_rooms
   has_many :chat_rooms, dependent: :destroy

@@ -15,6 +15,7 @@ class TrainersController < ApplicationController
     @trainer = Trainer.new(
       name: params[:name], 
       email: params[:email], 
+      password: params[:password], 
       image_name: "default_tariner.jpg"
     )
     @trainer.name = params[:name]
