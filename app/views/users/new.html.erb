@@ -8,14 +8,21 @@
           <%= message %>
         </div>
       <% end %>
-      <%= form_tag("/users/create") do %>
-        <p>ユーザー名</p>
-        <input name="name" value="<%= @user.name %>">
-        <p>メールアドレス</p>
-        <input name="email" value="<%= @user.email %>">
-        <p>パスワード</p>
-        <input type="password" name="password">
-        <input type="submit" value="新規登録">
+
+      <%= form_with url: "/users/create", method: :post do |form| %>
+        <%= form.label :name, "ユーザー名" %>
+        <%= form.text_field :name %>
+
+        <%= form.label :email, "メールアドレス" %>
+        <%= form.text_field :email %>
+
+        <%= form.label :password, "パスワード" %>
+        <%= form.password_field :password %>
+
+        <%= form.label :is_trainer, "トレーナーとして登録しますか？" %>
+        <%= form.check_box :is_trainer %>
+
+        <%= form.submit "新規登録" %>
       <% end %>
       </div>
     </div>

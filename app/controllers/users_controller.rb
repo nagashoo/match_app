@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.trainees
   end
 
   def show
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       name: params[:name], 
       email: params[:email], 
       password: params[:password], 
+      is_trainer: params[:is_trainer], 
       image_name: "default_user.jpg"
     )
     if @user.save
