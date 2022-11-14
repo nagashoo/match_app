@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @users = User.trainees
   end
 
   def show
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
       image_name: "default_user.jpg"
     )
     if @user.save
+      session[:user_id] = @user.id
       flash[:success] = "ユーザー登録を完了しました"
       redirect_to("/users/#{@user.id}")
     else
