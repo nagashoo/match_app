@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
+  before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
+
   def index
     @users = User.all
   end
 
   def show
     @user = User.find_by(id: params[:id])
-    @relationship = Relationship.new
   end
 
   def new
@@ -16,7 +17,8 @@ class UsersController < ApplicationController
     @user = User.new(
       name: params[:name], 
       email: params[:email], 
-      password: params[:password], 
+      password: params[:password],
+      is_trainer: params[:is_trainer],
       image_name: "default_user.jpg"
     )
     if @user.save

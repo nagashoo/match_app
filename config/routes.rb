@@ -8,12 +8,6 @@ Rails.application.routes.draw do
   get 'trainers/index' => "trainers#index"
   get "trainers/signup" => "trainers#new"
   get "trainers/:id" => "trainers#show"
-  post "trainers/create" => "trainers#create"
-  get "trainers/:id/edit" => "trainers#edit"
-  post "trainers/:id/update" =>"trainers#update"
-  get "trainers/login" => "trainers#login_form"
-  post "trainers/login" => "trainers#login"
-  post "trainers/logout" => "trainers#logout"
   
   get 'users/index' => "users#index"
   get "signup" => "users#new"
