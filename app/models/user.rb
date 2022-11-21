@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  has_many :reactions
+  has_many :chat_rooms
+  has_many :rooms, through: :chat_rooms
+  has_many :chats
+
   validates :name, { presence: true }
   validates :email, { presence: true, uniqueness: true }
   validates :password, { presence: true }
@@ -6,9 +11,4 @@ class User < ApplicationRecord
 
   scope :trainers, -> { where(is_trainer: true) }
   scope :trainees, -> { where(is_trainer: false) }
-  
-  has_many :reactions
-  has_many :chat_rooms
-  has_many :rooms, through: :chat_rooms
-  has_many :chats
 end

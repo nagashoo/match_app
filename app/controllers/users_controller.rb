@@ -86,9 +86,7 @@ class UsersController < ApplicationController
   end
 
   def interests
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
     @interests = Interest.where(user_id: @user.id)
-    @room = Room.find(id: params[:id])
   end
-
 end
