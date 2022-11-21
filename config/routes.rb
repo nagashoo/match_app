@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get "chats/show" => "chats#show"
-  post "chats/create" => "chats#create"
+  get "rooms/:id/" => "rooms#show"
+  post "rooms/create" => "rooms#create"
 
   post "interests/:trainer_id/create" => "interests#create"
   post "interests/:trainer_id/destroy" => "interest#destroy"

@@ -8,23 +8,23 @@
         <%= link_to("編集", "/users/#{@user.id}/edit") %>
       <% end %>
     </div>
-    
+
     <ul class="user-tabs">
       <li class="active"><%= link_to("話を聞きたい", "/users/#{@user.id}/interests") %></li>
     </ul>
-    
+
     <% @interests.each do |interest| %>
-      <% trainer = Trainer.find_by(id: interest.trainer_id) %>
       <div class="trainers-index-item">
         <div class="trainer-left">
-          <img src="<%= "/trainer_images/#{trainer.image_name}" %>">
+          <img src="<%= "/user_images/#{@user.image_name}" %>">
         </div>
         <div class="trainer-right">
           <div class="trainer-name">
-            <%= link_to(trainer.name, "/trainers/#{trainer.id}") %>
+            <%= link_to(interest.trainer.name, "/trainers/#{interest.trainer.id}") %>
           </div>
         </div>
       </div>
     <% end %>
+
   </div>
 </div>

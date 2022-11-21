@@ -6,4 +6,5 @@ class TrainersController < ApplicationController
   def show
     @trainer = User.find_by(id: params[:id])
   end
+
 end

@@ -1,0 +1,10 @@
+<div class="chat-page">
+  <p>チャットルームページ</p>
+  <div id='chat-messsages'>
+    <%= render @chats %>
+  </div>
+
+  <form>
+    <textarea data-behavior="room_speaker" data-chat-room_id="<%= @room.id %>" placeholder="メッセージを入力" class="chat-room__message-form_textarea"></textarea>
+  </form>
+</div>

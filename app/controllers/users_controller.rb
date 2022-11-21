@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
+  before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
+
   def index
     @users = User.trainees
   end
 
   def show
     @user = User.find_by(id: params[:id])
-    @relationship = Relationship.new
   end
 
   def new
@@ -13,14 +14,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(
-      name: params[:name], 
-      email: params[:email], 
-      password: params[:password], 
-      is_trainer: params[:is_trainer], 
-      image_name: "default_user.jpg"
-    )
-    if @user.save
+    @user = User.new(user_params)
+    @user.image_name = "default_user.jpg"
+
+    if @user.save!
       flash[:success] = "ユーザー登録を完了しました"
       redirect_to("/users/#{@user.id}")
     else
@@ -45,7 +42,8 @@ class UsersController < ApplicationController
       image = params[:image]
       File.binwrite("public/user_images/#{@user.image_name}", image.read)
     end
-    if @user.save
+
+    if @user.save!
       flash[:notice] = "ユーザー情報を編集しました"
       redirect_to("/users/#{@user.id}")
     else
@@ -59,8 +57,7 @@ class UsersController < ApplicationController
     redirect_to("/")
   end
 
-  def login_form
-  end
+  def login_form; end
 
   def login
     @user = User.find_by(email: params[:email], password: params[:password])
@@ -83,8 +80,13 @@ class UsersController < ApplicationController
   end
 
   def interests
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
     @interests = Interest.where(user_id: @user.id)
   end
 
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :is_trainer)
+  end
 end
