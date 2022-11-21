@@ -14,15 +14,18 @@
     </ul>
     
     <% @interests.each do |interest| %>
-      <% trainer = Trainer.find_by(id: interest.trainer_id) %>
+      <% trainer = User.trainers.find_by(id: interest.trainer_id) %>
+      <% room = Room.find_by(params[:id]) %>
       <div class="trainers-index-item">
         <div class="trainer-left">
-          <img src="<%= "/trainer_images/#{trainer.image_name}" %>">
+          <img src="<%= "/user_images/#{@user.image_name}" %>">
         </div>
         <div class="trainer-right">
           <div class="trainer-name">
-            <% room = Room.find_by(params[:id]) %>
-            <%= link_to(trainer.name, "/rooms/#{room.id}") %>
+            <%= link_to(trainer.name, "/trainers/#{trainer.id}") %>
+          </div>
+          <div class="room">
+            <%= link_to("チャットを始める", "/rooms/#{room.id}") %>
           </div>
         </div>
       </div>

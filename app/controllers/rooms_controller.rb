@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
 
   def show
-    trainer = Trainer.find_by(id: params[:id])
+    trainer = User.trainers.find_by(id: interest.trainer_id) 
     @room = Room.find(params[:id])
     @chat_room = @room.chat_rooms.where(trainer_id: trainer.id)
     @chats = Chat.where(room: @room)
@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    current_user_rooms = ChatRoom.where(user_id: @current_user.id, trainer_id: trainer.id).map(&:room)
+    current_user_rooms = ChatRoom.where(user_id: @current_user.id).map(&:room)
     room = ChatRoom(room: current_user_rooms, trainer_id: params[:trainer_id]).map(&:room).first
     if room.blank
       room = Room.create

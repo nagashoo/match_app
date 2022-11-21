@@ -16,7 +16,7 @@
         <%= form.label :password, "パスワード" %>
         <%= form.password_field :password %>
         <%= form.label :is_trainer, "トレーナーとして登録しますか？" %>
-        <%= form.check_box :is_trainer, {}, "trainer", "trainee" %>
+        <%= form.check_box :is_trainer %>
         <%= form.submit "新規登録" %>
       <% end %>
       </div>
