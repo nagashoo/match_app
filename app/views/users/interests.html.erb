@@ -15,7 +15,6 @@
     
     <% @interests.each do |interest| %>
       <% trainer = User.trainers.find_by(id: interest.trainer_id) %>
-      <% room = Room.find_by(params[:id]) %>
       <div class="trainers-index-item">
         <div class="trainer-left">
           <img src="<%= "/user_images/#{@user.image_name}" %>">
@@ -25,7 +24,7 @@
             <%= link_to(trainer.name, "/trainers/#{trainer.id}") %>
           </div>
           <div class="room">
-            <%= link_to("チャットを始める", "/rooms/#{room.id}") %>
+            <%= link_to("チャットをはじめる", "/rooms/#{@room.id}") %>
           </div>
         </div>
       </div>

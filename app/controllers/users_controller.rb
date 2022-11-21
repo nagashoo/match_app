@@ -88,6 +88,7 @@ class UsersController < ApplicationController
   def interests
     @user = User.find_by(id: params[:id])
     @interests = Interest.where(user_id: @user.id)
+    @room = Room.find(id: params[:id])
   end
 
 end
