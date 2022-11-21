@@ -4,8 +4,8 @@
       <img src="<%= "/trainer_images/#{@trainer.image_name}" %>"> 
       <h2><%= @trainer.name %></h2>
       <p><%= @trainer.email %></p>
-      <%= link_to("編集", "/users/#{@user.id}/edit") %>
-      <%= button_to("アカウント削除", "/users/#{@user.id}/destroy") %>
+      <%= link_to("編集", "/users/#{@trainer.id}/edit") %>
+      <%= button_to("アカウント削除", "/users/#{@trainer.id}/destroy") %>
       <h3>プロフィール</h3>
       <p><%= @trainer.location %>  <%= @trainer.gender %>  <%= @trainer.age %></p>
       <p class="text_display"><%= @trainer.profile %></p>
